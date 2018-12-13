@@ -9,10 +9,16 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ServiComponent } from './servi/servi.component';
 
+import {EquipoService} from'./equipo.service';
+import { from } from 'rxjs';
+
 
 const routes: Routes = [
   { path: 'Home', component:HomeComponent },
   { path: 'servi', component:ServiComponent },
+
+  { path: '', component:HomeComponent, pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ]
 
 @NgModule({
@@ -29,7 +35,9 @@ const routes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    EquipoService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

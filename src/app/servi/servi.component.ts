@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EquipoService} from './../equipo.service'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-servi',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiComponent implements OnInit {
 
-  constructor() { }
+  equipo:any=[];
+
+  constructor(private _servicio:EquipoService) { 
+
+    this.equipo=_servicio.obtenerEquipo();
+  }
 
   ngOnInit() {
   }
